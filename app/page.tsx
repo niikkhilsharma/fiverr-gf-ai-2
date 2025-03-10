@@ -12,7 +12,7 @@ interface ModelCardProps {
 	slug: string
 }
 
-export default async function Home({ searchParams }: { searchParams: { gender: string } }) {
+export default async function Home() {
 	const modelData: ModelCardProps[] = [
 		{
 			name: 'Valentina Smith',

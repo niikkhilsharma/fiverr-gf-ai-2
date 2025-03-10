@@ -14,7 +14,6 @@ import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
 import {
 	Brush,
-	ChevronUp,
 	Compass,
 	Dot,
 	Fan,
@@ -24,11 +23,9 @@ import {
 	MessageCircleMore,
 	PhoneCallIcon,
 	TrophyIcon,
-	User2,
 } from 'lucide-react'
 import Link from 'next/link'
 import { buttonVariants } from './ui/button'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu'
 import Image from 'next/image'
 
 export function AppSidebar() {
