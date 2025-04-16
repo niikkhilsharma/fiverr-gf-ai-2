@@ -2,10 +2,11 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Poppins } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/navbar'
+import Navbar from '@/components/Navbar/navbar'
 import { ThemeProvider } from '@/components/theme-provider'
 import { SidebarProvider } from '@/components/ui/sidebar'
 import { AppSidebar } from '@/components/app-sidebar'
+import { Toaster } from '@/components/ui/sonner'
 
 const poppins = Poppins({
 	variable: '--font-poppins',
@@ -34,14 +35,15 @@ export default async function asyncRootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<body className={`${geistSans.variable} ${poppins.className} ${geistMono.variable} antialiased`}>
 				<ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
 					<Navbar />
 					<SidebarProvider>
 						<AppSidebar />
 						{/* <SidebarTrigger /> */}
-						<div className="flex justify-center items-center w-full">{children}</div>
+						<div className="flex justify-center items-center w-full pt-[64px] fixed top-0 md:pl-[16rem]">{children}</div>
+						<Toaster />
 					</SidebarProvider>
 				</ThemeProvider>
 			</body>

@@ -61,21 +61,19 @@ export default async function Home() {
 	]
 
 	return (
-		<div>
+		<div className="min-h-svh h-svh pb-20 w-full px-4 sm:px-6">
 			<Banner />
-			<MaxWidthWrapper>
-				<div className="my-4">
-					<h1 className="text-2xl sm:text-3xl font-semibold my-6">
-						Explore <span className="text-destructive-foreground"> AI Girlfriends </span>- NSFW Chats
-					</h1>
+			<div className="my-4">
+				<h1 className="text-2xl sm:text-3xl font-semibold my-6">
+					Explore <span className="text-destructive-foreground"> AI Girlfriends </span>- NSFW Chats
+				</h1>
 
-					<div className="flex justify-center sm:justify-start gap-4 flex-wrap">
-						{modelData.map(model => (
-							<ModelCard key={model.slug} model={model} />
-						))}
-					</div>
+				<div className="flex justify-center sm:justify-start gap-4 flex-wrap">
+					{modelData.map(model => (
+						<ModelCard key={model.slug} model={model} />
+					))}
 				</div>
-			</MaxWidthWrapper>
+			</div>
 		</div>
 	)
 }

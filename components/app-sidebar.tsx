@@ -31,7 +31,7 @@ import Image from 'next/image'
 export function AppSidebar() {
 	const menuItems = [
 		{ title: 'Home', href: '/', icon: Compass },
-		{ title: 'Chat', href: '/chat', icon: MessageCircleMore },
+		// { title: 'Chat', href: '/chat', icon: MessageCircleMore },
 		{ title: 'Collection', href: '/collection', icon: ImagePlusIcon },
 		{ title: 'Generate Image', href: '/generate-image', icon: Fan },
 		{ title: 'Create Character', href: '/create-character', icon: Brush },

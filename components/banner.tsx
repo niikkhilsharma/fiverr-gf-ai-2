@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button'
 
 const Banner = () => {
 	return (
-		<div className="lg:px-6  lg:mt-6 relative">
-			<Link className="absolute inset-0 z-20" href="/create-ai-girl" />
+		<div className="lg:mt-6 relative">
+			<Link className="absolute inset-0 z-20" href="/create-character" />
 			<div className="relative bg-[url(https://fantasygf.ai/hero-pattern-bg.svg)] bg-cover bg-[center] lg:rounded-3xl">
 				<Image
 					alt="Hero pattern background"
