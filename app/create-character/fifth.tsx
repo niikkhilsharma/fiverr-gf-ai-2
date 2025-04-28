@@ -1,9 +1,15 @@
 'use client'
-
 import { cn } from '@/lib/utils'
-import Image from 'next/image'
+import { FemaleModelTypes } from './page'
+import { Dispatch, SetStateAction } from 'react'
 
-export default function Fifth() {
+export default function Fifth({
+	femaleModel,
+	setFemaleModel,
+}: {
+	femaleModel: FemaleModelTypes
+	setFemaleModel: Dispatch<SetStateAction<FemaleModelTypes>>
+}) {
 	const personality = [
 		{ name: 'Caregiver', content: 'Nurturing, protective, and always there to offer comfort.' },
 		{ name: 'Sage', content: 'Wise, knowledgeable, and always willing to share.' },
@@ -26,8 +32,12 @@ export default function Fifth() {
 				<div className="flex gap-4 justify-center items-center mt-4 flex-wrap">
 					{personality.map((personality, index) => (
 						<div
+							onClick={() => setFemaleModel(prev => ({ ...prev, personality: personality.name }))}
 							key={index}
-							className="flex flex-col w-48 aspect-video p-2 rounded-md bg-muted hover:bg-muted/80 hover:cursor-pointer border gap-4 justify-center items-center relative">
+							className={cn(
+								'flex flex-col w-48 aspect-video p-2 rounded-md bg-muted hover:bg-muted/80 hover:cursor-pointer border gap-4 justify-center items-center relative',
+								femaleModel.personality === personality.name && 'ring-2 ring-primary'
+							)}>
 							<h3 className="font-semibold text-center">{personality.name}</h3>
 							<p className="text-sm text-center">{personality.content}</p>
 						</div>

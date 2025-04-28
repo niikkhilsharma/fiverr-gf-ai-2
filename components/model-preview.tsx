@@ -5,9 +5,9 @@ import { Card, CardContent } from './ui/card'
 import { BrainIcon, ImageIcon } from 'lucide-react'
 import { Button } from './ui/button'
 import { Separator } from './ui/separator'
-import { FemaleModelTypes } from '@/utils/data/models'
+import { AIFemaleCharacter } from '@prisma/client'
 
-const ModelPreview = ({ modelData }: { modelData: FemaleModelTypes }) => {
+const ModelPreview = ({ modelData }: { modelData: AIFemaleCharacter }) => {
 	return (
 		<div className={'pb-20 h-svh overflow-y-auto'}>
 			<Carousel opts={{}} className="w-full">
@@ -17,7 +17,7 @@ const ModelPreview = ({ modelData }: { modelData: FemaleModelTypes }) => {
 							<Card className="rounded-none p-0">
 								<CardContent className="flex aspect-square items-center justify-center p-0">
 									<Image
-										src={modelData.avatar}
+										src={modelData.image}
 										width={100}
 										height={100}
 										alt="Anime AI Girl Avatar"
@@ -34,7 +34,7 @@ const ModelPreview = ({ modelData }: { modelData: FemaleModelTypes }) => {
 			</Carousel>
 			<div className="px-4 py-4">
 				<h1 className="text-lg font-semibold">{modelData.name}</h1>
-				<p className="text-foreground/60 mt-2 max-w-[85%] text-sm">{modelData.about}</p>
+				<p className="text-foreground/60 mt-2 max-w-[85%] text-sm">{modelData.age}</p>
 				<Button className="mt-4 w-full" variant={'secondary'}>
 					<ImageIcon /> Generate Image
 				</Button>
@@ -57,8 +57,8 @@ const ModelPreview = ({ modelData }: { modelData: FemaleModelTypes }) => {
 							<BrainIcon />
 						</Button>
 						<div>
-							<h6 className="font-light uppercase text-secondary-foreground/60">Occupation</h6>
-							<h5 className="font-semibold">{modelData.occupation}</h5>
+							<h6 className="font-light uppercase text-secondary-foreground/60">Hair Style</h6>
+							<h5 className="font-semibold">{modelData.hairStyle}</h5>
 						</div>
 					</div>
 					<div className="flex gap-2 text-xs items-start justify-start py-2">
@@ -66,8 +66,8 @@ const ModelPreview = ({ modelData }: { modelData: FemaleModelTypes }) => {
 							<BrainIcon />
 						</Button>
 						<div>
-							<h6 className="font-light uppercase text-secondary-foreground/60">Hobbies</h6>
-							<h5 className="font-semibold">{modelData.hobbies.join('\n ')}</h5>
+							<h6 className="font-light uppercase text-secondary-foreground/60">Hair Color</h6>
+							<h5 className="font-semibold">{modelData.hairColor}</h5>
 						</div>
 					</div>
 					<div className="flex gap-2 text-xs items-start justify-start py-2">
@@ -102,7 +102,7 @@ const ModelPreview = ({ modelData }: { modelData: FemaleModelTypes }) => {
 						</Button>
 						<div>
 							<h6 className="font-light uppercase text-secondary-foreground/60">Ethnicity</h6>
-							<h5 className="font-semibold">{modelData.ethnicity}</h5>
+							<h5 className="font-semibold">{modelData.ethinicity}</h5>
 						</div>
 					</div>
 					<div className="flex gap-2 text-xs items-start justify-start py-2">
@@ -138,7 +138,7 @@ const ModelPreview = ({ modelData }: { modelData: FemaleModelTypes }) => {
 						</Button>
 						<div>
 							<h6 className="font-light uppercase text-secondary-foreground/60">Butt</h6>
-							<h5 className="font-semibold">{modelData.buttSize}</h5>
+							<h5 className="font-semibold">{modelData.butSize}</h5>
 						</div>
 					</div>
 				</div>
@@ -149,7 +149,7 @@ const ModelPreview = ({ modelData }: { modelData: FemaleModelTypes }) => {
 				<p className="text-secondary-foreground/60 text-sm mt-2">No images yet. Generate some images</p>
 				<div className="flex gap-4 flex-wrap">
 					{Array.from({ length: 4 }).map((_, index) => (
-						<Image key={index} width={100} height={100} src={modelData.avatar} alt="avatar" className="aspect-square rounded-xl" />
+						<Image key={index} width={100} height={100} src={modelData.image} alt="avatar" className="aspect-square rounded-xl" />
 					))}
 				</div>
 			</div>

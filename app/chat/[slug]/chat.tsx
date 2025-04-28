@@ -1,33 +1,22 @@
 'use client'
-
-import { useState, useEffect, useRef } from 'react'
-import FemalemodelData from '@/utils/data/models'
+import { useState } from 'react'
 import { useChat } from '@ai-sdk/react'
-import { useRouter } from 'next/navigation'
 import ModelPreview from '@/components/model-preview'
 import { Button } from '@/components/ui/button'
 import { ProfileSearch } from '@/components/profile-search'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { PanelLeft } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import ChatBox from './chat-box'
 import { Input } from '@/components/ui/input'
+import { AIFemaleCharacter } from '@prisma/client'
 
-export default function Chat({ modelSlug }: { modelSlug: string }) {
-	const { messages, input, handleInputChange, handleSubmit, status } = useChat({
+export default function Chat({ femaleModelData }: { femaleModelData: AIFemaleCharacter }) {
+	const { messages, input, handleInputChange, handleSubmit } = useChat({
 		maxSteps: 5,
 		api: '/api/chat', // Ensure this matches your API route path
 	})
 
-	const router = useRouter()
 	const [showModelPreview, setShowModelPreview] = useState(false)
-	const modelData = FemalemodelData.find(model => model.slug === modelSlug)!
-
-	// Redirect if model not found
-	useEffect(() => {
-		if (!modelSlug) router.push('/')
-		if (!modelData) router.push('/')
-	}, [modelData, router])
 
 	return (
 		<div className="w-full flex min-h-svh h-full">
@@ -37,10 +26,10 @@ export default function Chat({ modelSlug }: { modelSlug: string }) {
 			<div className={'w-full flex flex-col'}>
 				<div className="border-b p-4 flex items-center gap-4 w-full bg-background border-r sticky top-[64px] z-10">
 					<Avatar>
-						<AvatarImage src={modelData.avatar} />
-						<AvatarFallback>{modelData.name?.substring(0, 2)}</AvatarFallback>
+						<AvatarImage src={femaleModelData.image} />
+						<AvatarFallback>{femaleModelData.name?.substring(0, 2)}</AvatarFallback>
 					</Avatar>
-					<h3 className="text-xl font-bold truncate">{modelData.name}</h3>
+					<h3 className="text-xl font-bold truncate">{femaleModelData.name}</h3>
 					<Button
 						size={'icon'}
 						variant={'outline'}
@@ -66,7 +55,7 @@ export default function Chat({ modelSlug }: { modelSlug: string }) {
 
 			{showModelPreview && (
 				<div className="w-full max-w-80 border-l">
-					<ModelPreview modelData={modelData!} />
+					<ModelPreview modelData={femaleModelData!} />
 				</div>
 			)}
 		</div>

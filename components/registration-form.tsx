@@ -30,7 +30,15 @@ const formSchema = z.object({
 	profilePicture: z.instanceof(File).optional(),
 })
 
-export function RegistrationForm() {
+export function RegistrationForm({
+	firstName = '',
+	lastName = '',
+	email = '',
+}: {
+	firstName?: string
+	lastName?: string
+	email?: string
+}) {
 	const router = useRouter()
 	const [isLoading, setIsLoading] = useState(false)
 	const [profilePicture, setProfilePicture] = useState<string | null>(null)
@@ -38,9 +46,9 @@ export function RegistrationForm() {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			firstName: '',
-			lastName: '',
-			email: '',
+			firstName: firstName,
+			lastName: lastName,
+			email: email,
 			password: '',
 		},
 	})
@@ -104,7 +112,7 @@ export function RegistrationForm() {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full">
 				<div className="flex justify-center mb-6">
 					<div className="relative">
 						<Avatar className="h-24 w-24">

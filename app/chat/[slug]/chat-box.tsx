@@ -44,14 +44,14 @@ export default function ChatBox({
 
 									if (imageUrl) {
 										// Clean the text by removing the image markdown/blob
-										let cleanText = part.text
+										const cleanText = part.text
 											.replace(/!\[.*?\]\(data:image\/[^)]+\)/g, '') // Remove markdown image
 											.replace(/(data:image\/[^;]+;base64,[^\s"')]+)/g, '') // Remove raw base64
 											.replace(/🖼️ Generated Image:.*$/gm, '') // Remove image captions
 											.trim()
 
 										// Split text by image placeholder if exists
-										let textParts = cleanText.split(/\[?image\]?/i).filter(Boolean)
+										const textParts = cleanText.split(/\[?image\]?/i).filter(Boolean)
 
 										return (
 											<div key={`${message.id}-${i}`}>

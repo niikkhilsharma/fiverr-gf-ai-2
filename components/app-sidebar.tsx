@@ -12,18 +12,7 @@ import {
 } from '@/components/ui/sidebar'
 import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
-import {
-	Brush,
-	Compass,
-	Dot,
-	Fan,
-	Gem,
-	HeartHandshakeIcon,
-	ImagePlusIcon,
-	MessageCircleMore,
-	PhoneCallIcon,
-	TrophyIcon,
-} from 'lucide-react'
+import { Brush, Compass, Dot, Fan, Gem, HeartHandshakeIcon, ImagePlusIcon, PhoneCallIcon, TrophyIcon } from 'lucide-react'
 import Link from 'next/link'
 import { buttonVariants } from './ui/button'
 import Image from 'next/image'
@@ -31,9 +20,8 @@ import Image from 'next/image'
 export function AppSidebar() {
 	const menuItems = [
 		{ title: 'Home', href: '/', icon: Compass },
-		// { title: 'Chat', href: '/chat', icon: MessageCircleMore },
 		{ title: 'Collection', href: '/collection', icon: ImagePlusIcon },
-		{ title: 'Generate Image', href: '/generate-image', icon: Fan },
+		{ title: 'Generate Image', href: '/create-character', icon: Fan },
 		{ title: 'Create Character', href: '/create-character', icon: Brush },
 		{ title: 'My AI', href: '/my-ai', icon: HeartHandshakeIcon },
 		{ title: 'Become Premium', href: '/become-premium', icon: Gem },

@@ -1,10 +1,8 @@
 'use client'
-
 import { useChat } from '@ai-sdk/react'
-import { useEffect, useState } from 'react'
 
-export default function Chat({ slug }: { slug: string }) {
-	const { messages, input, handleInputChange, handleSubmit, status } = useChat({
+export default function Chat() {
+	const { messages, input, handleInputChange, handleSubmit } = useChat({
 		maxSteps: 5,
 		api: '/api/chat', // Ensure this matches your API route path
 	})

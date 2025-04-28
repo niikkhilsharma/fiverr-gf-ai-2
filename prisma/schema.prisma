@@ -14,11 +14,39 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  firstName String
-  lastName  String
-  email     String   @unique
-  password  String
-  image     String?
-  createdAt DateTime @default(now())
+  id                String              @id @default(cuid())
+  firstName         String
+  lastName          String
+  email             String              @unique
+  password          String
+  image             String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @default(now()) @updatedAt
+  AIFemaleCharacter AIFemaleCharacter[]
+}
+
+enum CharacterStyle {
+  real
+  anime
+}
+
+model AIFemaleCharacter {
+  id           Int            @id @default(autoincrement())
+  name         String
+  image        String
+  style        CharacterStyle
+  ethinicity   String
+  age          String
+  eyeColor     String
+  hairStyle    String
+  hairColor    String
+  bodyType     String
+  breastSize   String
+  butSize      String
+  personality  String
+  relationship String
+  userId       String
+  createdBy    User           @relation(fields: [userId], references: [id])
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @default(now()) @updatedAt
 }
