@@ -47,8 +47,7 @@ export async function POST(request: Request) {
 
 		// FIX: Send the prompt as an object with a prompt property
 		const characterImageUrlResponse = await axios.post('http://localhost:3000/api/create-character/create-image', {
-			prompt:
-				'create a asian women above 18 age, brown eyes, short hairs, brunette hair, atheletic, medium size breast, athletic ass real image person full body',
+			prompt: `Create a realistic full-body image of a woman over 18 years old, of ${ethinicity} ethnicity, with ${eyeColor} eyes, ${hairColor} hair styled in ${hairStyle}, having a ${bodyType} body shape, ${breastSize} breast size, and ${butSize} butt size. The image should depict a natural, lifelike person from head to toe.`,
 		})
 
 		if (characterImageUrlResponse.status !== 200) {
