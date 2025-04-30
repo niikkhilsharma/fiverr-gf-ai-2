@@ -46,9 +46,12 @@ export async function POST(request: Request) {
 		const { name } = result.object
 
 		// FIX: Send the prompt as an object with a prompt property
-		const characterImageUrlResponse = await axios.post('http://localhost:3000/api/create-character/create-image', {
-			prompt: `Create a realistic full-body image of a woman over 18 years old, of ${ethinicity} ethnicity, with ${eyeColor} eyes, ${hairColor} hair styled in ${hairStyle}, having a ${bodyType} body shape, ${breastSize} breast size, and ${butSize} butt size. The image should depict a natural, lifelike person from head to toe.`,
-		})
+		const characterImageUrlResponse = await axios.post(
+			`${process.env.NEXT_PUBLIC_SITE_URL}/api/create-character/create-image`,
+			{
+				prompt: `Create a realistic full-body image of a woman over 18 years old, of ${ethinicity} ethnicity, with ${eyeColor} eyes, ${hairColor} hair styled in ${hairStyle}, having a ${bodyType} body shape, ${breastSize} breast size, and ${butSize} butt size. The image should depict a natural, lifelike person from head to toe. Not Blurr`,
+			}
+		)
 
 		if (characterImageUrlResponse.status !== 200) {
 			return NextResponse.json(
